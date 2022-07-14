@@ -1,17 +1,27 @@
-public class ArrayQ4 {
+public class ArrayQ5 {
     public static void main(String[] args) {
         ArrayList ar = new ArrayList();
+        ar.add(100);
+        ar.add(200);
+        ar.add(300);
+        ar.add(400);
 
-        for ( int i = 0; i < 100; i++ ) {
-            ar.add((i + 1) * 10);
-        }
+        ar.remove(2);
+        int value = ar.get(2);
+        System.out.println(value);
+        // 출력 : 400
 
-        int ar_size = ar.size(); // ar_size의 값은 100 이어야 합니다.
+        ar.remove(0);
+        value = ar.get(0);
+        System.out.println(value);
+        // 출력 : 200
 
-        for ( int i = 0; i < ar_size; i++ ) {
-            int value = ar.get(i);
-            System.out.println(value);
-        }
+        ar.add(78);
+        value = ar.get(2);
+        System.out.println(value);
+        // 출력 : 78
+
+
 
     }
 }

@@ -19,7 +19,7 @@ public class ArrayListMaker {
     }
 }
 class ArrayList {
-    private int size;
+    int size;
     private Object[] arr;
     ArrayList(){
         size = 0;
@@ -27,12 +27,44 @@ class ArrayList {
     }
     void add(Object d){
         size=size+1;
-        Object[] newarr = new Object[size];
-        System.arraycopy(arr,0,newarr,0,size-1);
-        newarr[size-1] = d;
-        arr = newarr;
+        Object[] newArray = new Object[size];
+        System.arraycopy(arr,0,newArray,0,size-1);
+        newArray[size-1] = d;
+        arr = newArray;
     }
     int get(int index){
         return (int)arr[index];
+    }
+    public int size() {
+        return size;
+    }
+    void remove(int index){
+        if(0<=index && index<size) {
+            size= size-1;
+            Object[] newArray = new Object[size];
+            System.arraycopy(arr, 0, newArray, 0, index);
+            System.arraycopy(arr, index+1, newArray, index, size-index);
+            arr=newArray;
+        }
+        else
+            System.out.println("index 가 허용범위를 벗어났습니다. remove -1");
+
+        //  size =+(index - 1)
+        // 0 1 2 3 4 5 //6 4
+        // 0 1 2 4 5 //5
+
+    }
+    void add(Object d, int index){
+        if(0<=index && index<=size){
+            size= size +1;
+            Object[] newArray = new Object[size];
+            System.arraycopy(arr, 0, newArray, 0, index);
+            newArray[index] = d;
+            System.arraycopy(arr, index, newArray, index+1, size-index-1);
+            arr=newArray;
+        }
+        else
+            System.out.println("index 가 허용범위를 벗어났습니다. add -1");
+
     }
 }
