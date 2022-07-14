@@ -1,3 +1,5 @@
+package com.ll.nettearr;
+
 public class ArrayQ5 {
     public static void main(String[] args) {
         ArrayList ar = new ArrayList();

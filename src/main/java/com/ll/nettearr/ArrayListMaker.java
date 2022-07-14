@@ -1,4 +1,7 @@
+package com.ll.nettearr;
+
 public class ArrayListMaker {
+    //직접 만들어본 코드
     public static void main(String[] args) {
         ArrayList ar = new ArrayList();
         ar.add(100);
@@ -26,17 +29,16 @@ class ArrayList {
         arr = new Object[size];
     }
     void add(Object d){
-        size=size+1;
-        Object[] newArray = new Object[size];
-        System.arraycopy(arr,0,newArray,0,size-1);
-        newArray[size-1] = d;
-        arr = newArray;
-    }
-    int get(int index){
-        return (int)arr[index];
-    }
-    public int size() {
-        return size;
+        if(isFull()){
+            size = size + 1;
+            Object[] newArray = new Object[size];
+            System.arraycopy(arr, 0, newArray, 0, size - 1);
+            newArray[size - 1] = d;
+            arr = newArray;
+        }
+        else
+            arr[size] = d;
+
     }
     void remove(int index){
         if(0<=index && index<size) {
@@ -48,11 +50,16 @@ class ArrayList {
         }
         else
             System.out.println("index 가 허용범위를 벗어났습니다. remove -1");
-
         //  size =+(index - 1)
         // 0 1 2 3 4 5 //6 4
         // 0 1 2 4 5 //5
-
+    }
+    void removeSoft(int index){
+        for(int i=index+1 ; i<size ;i++)
+        {
+            arr[i] = arr[i+1];
+        }
+        size-- ;
     }
     void add(Object d, int index){
         if(0<=index && index<=size){
@@ -65,6 +72,17 @@ class ArrayList {
         }
         else
             System.out.println("index 가 허용범위를 벗어났습니다. add -1");
-
+    }
+    int get(int index){
+        return (int)arr[index];
+    }
+    public int size() {
+        return size;
+    }
+    public int lastIndex(){return size-1;}
+    boolean isFull(){
+        if(size< arr.length)
+            return false;
+        return true;
     }
 }

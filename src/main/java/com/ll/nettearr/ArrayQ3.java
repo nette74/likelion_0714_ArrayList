@@ -1,3 +1,4 @@
+package com.ll.nettearr;
 
 public class ArrayQ3 {
     public static void main(String[] args) {
